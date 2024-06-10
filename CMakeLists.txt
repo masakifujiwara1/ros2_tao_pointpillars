@@ -40,6 +40,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(vision_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(PCL REQUIRED)
@@ -92,7 +93,7 @@ file(GLOB_RECURSE SOURCE_FILES
 
 
 cuda_add_executable(${PROJECT_NAME} src/pp_inference_node.cpp ${SOURCE_FILES})
-ament_target_dependencies(${PROJECT_NAME} rclcpp std_msgs vision_msgs geometry_msgs PCL CUDA)
+ament_target_dependencies(${PROJECT_NAME} rclcpp std_msgs sensor_msgs vision_msgs geometry_msgs PCL CUDA)
 
 target_link_libraries(${PROJECT_NAME}
     libnvinfer.so
